@@ -26,12 +26,6 @@ app.get('/',(req,res)=>{
     res.render('home');
 })
 
-app.get('/makecampground',async (req,res) =>{
-    const camp = new Campground({tittle: 'My Backyard', 
-                                 description:"cheap Camping!"})
-    await camp.save();
-    res.send(camp);
-})
 
 app.listen(3000,() =>{
     console.log('serving on port 3000');
