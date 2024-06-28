@@ -2,36 +2,52 @@
     <div class="row">
         <h1 class="text-center">New Campground</h1>
         <div class="col-6 offset-3">
-            <form action="/campgrounds" method="POST">
+            <form action="/campgrounds" method="POST" novalidate class="validated-form">
                 <div class="mb-3">
                     <label class="form-label" for="title">Tittle</label>
                     <input class="form-control" type="text" id="title" name="campground[title]"
-                        placeholder="enter title">
+                        placeholder="enter title" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
                 </div>
-                
+
                 <div class="mb-3">
                     <label class="form-label" for="location">Location</label>
                     <input class="form-control" type="text" id="location" name="campground[location]"
-                        placeholder="enter location">
+                        placeholder="enter location" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label" for="image">Image url</label>
-                    <input class="form-control" type="text" id="image" name="campground[image]"
-                        placeholder="enter url">
+                    <input class="form-control" type="text" id="image" name="campground[image]" placeholder="enter url"
+                        required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="price">Campground Price</label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="price-label">$</span>
-                        <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price" 
-                        aria-describedby="price-label" name="campground[price]">
-                     </div>
+                        <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                            aria-describedby="price-label" name="campground[price]" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                    </div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label" for="description">Description</label>
-                    <textarea class="form-control" type="text" id="description" name="campground[description]"></textarea>
+                    <textarea class="form-control" type="text" id="description" name="campground[description]"
+                        required></textarea>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
                 </div>
 
                 <div class="mb-3">
@@ -41,3 +57,5 @@
             <a href="/campgrounds">all campgrounds</a>
         </div>
     </div>
+
+   
