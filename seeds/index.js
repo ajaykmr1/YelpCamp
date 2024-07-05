@@ -20,6 +20,7 @@ const seedDb = async () =>{
         const random1000 = Math.floor(Math.random()*1000);
         const price = Math.floor(Math.random()*20)+10;
         const camp = new Campground({
+            author: '6685ae9efbf8fecbb27c2d38',
             location:`${cities[random1000].city}, ${cities[random1000].state}`,
             image: `https://picsum.photos/400?random=${Math.random()}`,
             title: `${sample(descriptors)} ${sample(places)}`,
