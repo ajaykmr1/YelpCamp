@@ -7,25 +7,17 @@ const {campgroundSchema} = require('../schemas.js');
 const Campground = require('../models/campground');
 const {isLoggedIn, isAuthor, validateCampground} = require('../middleware')
 
-
-router.get('/', catchAsync(campgrounds.index));
+router.route('/')
+ .get(catchAsync(campgrounds.index))
+ .post(isLoggedIn, validateCampground, catchAsync(campgrounds.createCampground));
 
 router.get('/new', isLoggedIn, catchAsync(campgrounds.renderNewForm));
 
-router.post('/', isLoggedIn, validateCampground, catchAsync(campgrounds.createCampground));
-
-router.get('/:id', catchAsync(campgrounds.showCampgrounds));
+router.route('/:id')
+ .get( catchAsync(campgrounds.showCampgrounds))
+ .put(isLoggedIn, isAuthor, validateCampground, catchAsync(campgrounds.updateCampground))
+ .delete( isLoggedIn,  isAuthor, catchAsync(campgrounds.deleteCampground))
 
 router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(campgrounds.renderEditForm));
-
-router.put('/:id', isLoggedIn, isAuthor, validateCampground, catchAsync(campgrounds.updateCampground));
-
-router.delete('/:id', isLoggedIn,  isAuthor, catchAsync(async (req, res) => {
-    const { id } = req.params;
-    await Campground.findByIdAndDelete(id);
-    req.flash('success','successfuly deleted campground');
-    res.redirect('/campgrounds')
-}))
-
 
 module.exports = router;
